@@ -52,7 +52,16 @@ router.put("/:id", async (req, res) => {
 
 
 
-
+router.delete('/:id', async(req,res) => {
+    try{
+        const {id} = req.params
+        const data = await Account.deleteItem(id)
+        res.json(data)
+    }catch(err) {
+        res.status(500).json({message: err})
+    }
+    
+})
 
 
 module.exports = router;
